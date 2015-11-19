@@ -41,82 +41,84 @@
 package me.adaptive.arp.api;
 
 /**
- * Represents an instance of a service.
+ * Represents a network handover event on the system.
  *
- * @author Aryslan
- * @since v2.0
+ * @author Ferran Vila Conesa
+ * @since v2.2.1
  */
-public class Service extends APIBean {
+public class NetworkEvent extends APIBean {
 
     /**
-     * Endpoint of the service
+     * New type of network of the event
+     *
+     * @since v2.2.1
      */
-    private ServiceEndpoint[] serviceEndpoints;
+    private ICapabilities.Net network;
 
     /**
-     * The service name
+     * The timestamps in milliseconds when the event was fired.
+     *
+     * @since v2.2.1
      */
-    private String name;
+    private long timestamp;
 
     /**
      * Default constructor
      *
-     * @since v2.0
+     * @since v2.2.1
      */
-    public Service() {
+    public NetworkEvent() {
     }
 
     /**
      * Constructor used by the implementation
      *
-     * @param serviceEndpoints Endpoints of the service
-     * @param name             Name of the service
-     * @since v2.0.6
+     * @param network   of the app
+     * @param timestamp Timestamp of the event
+     * @since v2.2.1
      */
-    public Service(ServiceEndpoint[] serviceEndpoints, String name) {
-        this.serviceEndpoints = serviceEndpoints;
-        this.name = name;
+    public NetworkEvent(ICapabilities.Net network, long timestamp) {
+        this.network = network;
+        this.timestamp = timestamp;
     }
 
     /**
-     * Returns the serviceEndpoints
+     * Network event getter
      *
-     * @return serviceEndpoints
-     * @since v2.0
+     * @return New network switched
+     * @since v2.2.1
      */
-    public ServiceEndpoint[] getServiceEndpoints() {
-        return serviceEndpoints;
+    public ICapabilities.Net getNetwork() {
+        return network;
     }
 
     /**
-     * Set the serviceEndpoints
+     * Network setter
      *
-     * @param serviceEndpoints Endpoint of the service
-     * @since v2.0
+     * @param network New network switched
+     * @since v2.2.1
      */
-    public void setServiceEndpoints(ServiceEndpoint[] serviceEndpoints) {
-        this.serviceEndpoints = serviceEndpoints;
+    public void setNetwork(ICapabilities.Net network) {
+        this.network = network;
     }
 
     /**
-     * Returns the name
+     * Returns the timestamp of the event
      *
-     * @return name
-     * @since v2.0
+     * @return Timestamp of the event
+     * @since v2.2.1
      */
-    public String getName() {
-        return name;
+    public long getTimestamp() {
+        return timestamp;
     }
 
     /**
-     * Set the name
+     * Sets the timestamp of the event
      *
-     * @param name Name of the service
-     * @since v2.0
+     * @param timestamp Timestamp of the event
+     * @since v2.2.1
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
     }
-
-
 }
